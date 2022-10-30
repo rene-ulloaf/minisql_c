@@ -1,0 +1,15 @@
+#ifndef archivos_H_INCLUDED
+#define archivos_H_INCLUDED
+
+#include "include/archivos.h"
+
+using namespace std;
+
+class archivos{
+    public:
+	bool existe(char *);
+        ListaTablas* ObtenerTablas(char *, ListaTablas *);
+    private:
+};
+
+#endif // archivos_H_INCLUDED

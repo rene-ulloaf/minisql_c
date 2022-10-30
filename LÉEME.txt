@@ -1,0 +1,8 @@
+#InSTRUCCIONES
+Para compilar el programa de abrir la consola situarse en la carpeta donde está la aplicacion y escribir make.
+para ejecutarlo debe escribir en consola leugo de realizar la compilacion:
+./minisql -t [ruta archivo funciones] -d [ruta archivo datos]
+
+#Integrantes
+René Ulloa rulloaf@gmail.com
+Carlos Figueroa

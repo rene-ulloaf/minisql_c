@@ -1,0 +1,4 @@
+1	usuario
+2	vehiculo
+3	modelo
+9	empresa

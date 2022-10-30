@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1355104807 source:/home/chechex/Documentos/Documentos Importantes/Universidad/USACH/2012/2° Semestre/SISTOPE/Laboratorios/2/cb/minisql/TDAListaTabla.c
+	<stdlib.h>
+	<string.h>
+	"estructuras.h"
+	"TDAListaTabla.h"
+
+1355104463 /home/chechex/Documentos/Documentos Importantes/Universidad/USACH/2012/2° Semestre/SISTOPE/Laboratorios/2/cb/minisql/estructuras.h
+
+1355106615 /home/chechex/Documentos/Documentos Importantes/Universidad/USACH/2012/2° Semestre/SISTOPE/Laboratorios/2/cb/minisql/TDAListaTabla.h
+
+1355107115 source:/home/chechex/Documentos/Documentos Importantes/Universidad/USACH/2012/2° Semestre/SISTOPE/Laboratorios/2/cb/minisql/archivos.cpp
+	<stdlib.h>
+	<fstream>
+	"estructuras.h"
+	"TDAListaTabla.h"
+	"archivos.h"
+
+1355106150 /home/chechex/Documentos/Documentos Importantes/Universidad/USACH/2012/2° Semestre/SISTOPE/Laboratorios/2/cb/minisql/archivos.h
+
+1355106337 source:/home/chechex/Documentos/Documentos Importantes/Universidad/USACH/2012/2° Semestre/SISTOPE/Laboratorios/2/cb/minisql/minisql.cc
+	<cstdlib>
+	<string.h>
+	<iostream>
+	<fstream>
+	"estructuras.h"
+	"TDAListaTabla.h"
+	"archivos.h"
+
+1355107006 source:/home/chechex/Documentos/Documentos Importantes/Universidad/USACH/2012/2° Semestre/SISTOPE/Laboratorios/2/cb/minisql/TDAListaTabla.cpp
+	<stdlib.h>
+	<string.h>
+	"estructuras.h"
+	"TDAListaTabla.h"
+

@@ -1,0 +1,171 @@
+#include <stdlib.h>
+#include <string.h>
+
+#include "estructuras.h"
+#include "TDAListaTabla.h"
+/*#include "recursos.h"*/
+
+ListaTablas *creaLista(){
+   ListaTablas *Lista = malloc(sizeof(ListaTablas));
+
+   if(Lista != NULL){
+       Lista->ultimo = 0;
+       Lista->inicial = NULL;
+   }
+
+   return Lista;
+}
+
+NodoTablas *creaNodo(DatosTablas p){
+   NodoTablas *nuevo = malloc(sizeof(NodoTablas));
+
+	if(nuevo != NULL){
+     	nuevo->sgte = NULL;
+		nuevo->elem.id = p.id;
+     	nuevo->elem.nombre = p.nombre;
+     	nuevo->elem->datos = NULL;
+   }
+
+   return nuevo;
+}
+
+ListaTablas *ingresar(DatosTablas p, posicion pos, ListaTablas *L){
+    int i;
+    NodoTablas *nuevo = creaNodo(p);
+    NodoTablas *aux = L->inicial;
+
+    if((pos > L->ultimo+1) || (pos < 0)){
+        nuevo->sgte = L->ultimo;
+        L->ultimo++;
+    }
+
+    if(pos == 1){
+        nuevo->sgte = L->inicial;
+        L->inicial = nuevo;
+        L->ultimo++;
+    }else{
+        for(i=2;i<pos;i++){
+            aux = aux->sgte;
+        }
+
+        nuevo->sgte = aux->sgte;
+        aux->sgte = nuevo;
+        L->ultimo++;
+    }
+
+    return L;
+}
+
+posicion localizar(DatosTablas p, ListaTablas *L){
+    posicion pos=0,pos_ret=0;
+    NodoTablas *aux = L->inicial;
+
+    while(aux != NULL){
+        pos++;
+
+        if(esIgual(p,aux->elem.id)){
+           pos_ret = pos;
+        }
+
+        aux=aux->sgte;
+    }
+
+    return pos_ret;
+}
+
+ListaTablas *modificar(posicion pos, DatosTablas p, ListaTablas *L){
+    int i;
+    NodoTablas *aux = L->inicial;
+
+    if((pos < L->ultimo + 1) || (pos > 0)){
+        if(pos == 1){
+			aux->elem.id = p.id;
+            aux->elem.nombre = p.nombre;
+        }else{
+            for(i=1;i<pos;i++){
+                aux = aux->sgte;
+            }
+
+			aux->elem.id = p.id;
+            aux->elem.nombre = p.nombre;
+        }
+    }
+
+    return L;
+}
+
+DatosTablas *recuperar(posicion pos, ListaTablas *L){
+    int i;
+    DatosTablas *p;
+    NodoTablas *aux = L->inicial;
+
+    if((pos>L->ultimo + 1) || (pos < 0)){
+        p = copiarDato(L->ultimo);
+    }
+
+    if(pos == 1){
+        p = copiarDato(L->inicial);
+    }else{
+        for(i=1;i<pos;i++){
+            aux = aux->sgte;
+        }
+
+        p = copiarDato(aux);
+    }
+
+    return p;
+}
+
+ListaTablas *eliminar(ListaTablas *L, posicion pos){
+    int i;
+    NodoTablas *aux = L->inicial;
+    NodoTablas *ant;
+
+    if(L != NULL){
+        if((pos > 0) && (pos <= L->ultimo)){
+            if(pos == 1){
+                L->inicial->sgte = NULL;
+            }else{
+                for(i=2;i<=pos;i++){
+                    ant = aux;
+                    aux = aux->sgte;
+                }
+
+                ant->sgte = aux->sgte;
+                L->ultimo--;
+            }
+
+            free(aux);
+        }
+    }
+
+    return L;
+}
+
+DatosTablas tope(ListaTablas *L){
+    return L->inicial->elem;
+}
+
+int CantidadProd(ListaTablas *L){
+    return L->ultimo;
+}
+
+short esIgual(DatosTablas p, char *id){
+    short ret = _FALSE;
+
+    if(strcmp(p.id,id) == 0){
+        ret = _TRUE;
+    }
+
+    return ret;
+}
+
+DatosTablas *copiarDato(NodoTablas *n){
+    NodoTablas *nuevo = malloc(sizeof(NodoTablas));
+
+	nuevo->elem.id = n->elem.id;
+    nuevo->elem.nombre = n->elem.nombre;
+    nuevo->elem.datos = n->elem.datos;
+
+    return nuevo;
+}

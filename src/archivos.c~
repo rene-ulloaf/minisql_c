@@ -1,0 +1,38 @@
+using namespace std;
+
+int* DatosEntrada :: ObtenerTablas(char *arch){
+ListaProd * ObtenerProductos(ListaProd *productos){
+    char *sku, *nombre, *stock, aux[1],dir[_DIM_RUTA + 13] = {""};
+    FILE *archivo;
+    DatosProd producto;
+
+    strcat(dir,"");
+    strcat(dir,_RUTA);
+    strcat(dir,"productos.txt");
+
+    archivo = fopen(dir,"r");
+
+    if(archivo != NULL){
+        if(ExisteArchivo(dir)){
+            while(!feof(archivo) && fread(aux,1,1,archivo)){
+                fseek(archivo,-1, SEEK_CUR);
+
+                sku = (char *) malloc(max_sku * sizeof(char));
+                nombre = (char *) malloc(max_nom_prod * sizeof(char));
+                stock = (char *) malloc(max_stock * sizeof(char));
+
+                fscanf(archivo,"%s",sku);
+                fscanf(archivo,"%s",nombre);
+                fscanf(archivo,"%s",stock);
+
+                producto.SKU = sku;
+                producto.nombre = nombre;
+                producto.stock = atoi(stock);
+
+                productos = ingresarProd(producto,(productos->ultimo+1),productos);
+            }
+        }
+    }
+
+    return productos;
+}

@@ -1,0 +1,38 @@
+#include "include/estructuras.h"
+#include "include/TDAListaTabla.h"
+#include "include/archivos.h"
+
+using namespace std;
+
+bool existe(char* nombre){
+	ifstream fin;
+	fin.open(nombre);
+
+	if(!fin.is_open()){
+		fin.close();
+		return false;
+	}else{
+		fin.close();
+		return true;
+	}
+}
+
+ListaTablas* archivos :: ObtenerTablas(char *arch, ListaTablas *tablas){
+    DatosTablas tabla;
+	ifstream f;
+    string s;
+
+    f.open(arch, ios::in);
+    if(f.is_open()){
+		while(!f.eof()){
+            f >> s;
+			tabla.id = s
+			f >> s;
+			tabla.nombre = s
+		}
+	}
+
+	tablas = ingresarProd(tabla,(tablas->ultimo+1),tablas);
+
+    return tablas;
+}
